@@ -189,6 +189,7 @@ public class Civilization {
                 break;
             } else {
                 gold += 10;
+                numAttacks += 1;
                 break;
             }
         case 6:
