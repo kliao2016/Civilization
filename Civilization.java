@@ -127,7 +127,7 @@ public class Civilization {
                 }
                 cityArray[freeIndex] = newName;
             }
-            gold = gold - 15.5;
+            gold -= 15.5;
             break;
         case 2:
             if (cityArray[1] == null) {
@@ -160,24 +160,28 @@ public class Civilization {
             resources += 1.5;
             break;
         case 3:
-            if (gold < 5 && resources < 3) {
+            if (gold < 5 || resources < 3) {
                 System.out.println("Invalid move: "
                                    + "You do not have "
                                    + "enough gold and resources. "
                                    + "Your turn is over.");
                 break;
             } else {
+                gold -= 5;
+                resources -= 3;
                 military += 1;
             }
             break;
         case 4:
-            if (gold < 50 && resources < 2) {
+            if (gold < 50 || resources < 2) {
                 System.out.println("Invalid move: "
                                    + "You do not have "
                                    + "enough gold and resources. "
                                    + "Your turn is over.");
                 break;
             } else {
+                gold -= 50;
+                resources -= 2;
                 techPoints += 1;
             }
             break;
@@ -188,12 +192,15 @@ public class Civilization {
                                    + "Your turn is over.");
                 break;
             } else {
+                military -= 6;
+                happiness -= 3;
                 gold += 10;
                 numAttacks += 1;
                 break;
             }
         case 6:
             System.out.println("You have ended your turn.");
+            System.out.println("");
             break;
         default:
             break;
