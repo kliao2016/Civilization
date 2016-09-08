@@ -41,6 +41,9 @@ public class Civilization {
         System.out.println(" What would you like to name your first city?");
         cityArray[0] = keyboard.next();
         System.out.println("");
+        originalInfo();
+        System.out.println("");
+        turn();
 
         while (playing) {
             displayInfo();
@@ -53,22 +56,33 @@ public class Civilization {
         }
     }
 
+    public static void originalInfo() {
+        System.out.println("Your Current Information");
+        System.out.println("Cities: " + displayCity());
+        System.out.printf("Enemy Cities Attacked: " + numAttacks + "\n"
+                           + "Gold: %.2f\n" + "Resources: %.2f\n"
+                           + "Civilization Happiness: " + happiness + "\n"
+                           + "Military Units: " + military + "\n"
+                           + "Technology Points: " + techPoints
+                           + "\n", gold, resources);
+    }
+
     public static void displayInfo() {
-        resources = resources + 1;
+        resources += 1;
         if (happiness > 20.0) {
-            resources = resources + 5 * numCities();
+            resources += 5 * numCities();
         }
         gold = gold + 3 * numCities();
         if (resources % 2 == 0) {
-            happiness = happiness + 1;
+            happiness += 1;
         } else {
-            happiness = happiness - 3;
+            happiness -= 3;
         }
         System.out.println("Your Current Information");
         System.out.println("Cities: " + displayCity());
-        System.out.printf("Attack Count: " + numAttacks + "\n"
+        System.out.printf("Enemy Cities Attacked: " + numAttacks + "\n"
                            + "Gold: %.2f\n" + "Resources: %.2f\n"
-                           + "Happiness: " + happiness + "\n"
+                           + "Civilization Happiness: " + happiness + "\n"
                            + "Military Units: " + military + "\n"
                            + "Technology Points: " + techPoints
                            + "\n", gold, resources);
