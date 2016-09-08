@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
 public class Civilization {
-    static boolean playing = true;
-    static String[] cityArray = new String[5];
-    static int numAttacks = 0;
-    static double gold = 20.5;
-    static double resources = 30.0;
-    static int happiness = 10;
-    static int military = 0;
-    static int techPoints = 0;
+    private static boolean playing = true;
+    private static String[] cityArray = new String[5];
+    private static int numAttacks = 0;
+    private static double gold = 20.5;
+    private static double resources = 30.0;
+    private static int happiness = 10;
+    private static int military = 0;
+    private static int techPoints = 0;
 
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
