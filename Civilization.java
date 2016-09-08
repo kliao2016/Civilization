@@ -108,12 +108,14 @@ public class Civilization {
                 System.out.println("Invalid move: "
                                    + "You do not have enough gold. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             }
             if (cityArray[cityArray.length - 1] != null) {
                 System.out.println("Invalid move: "
                                    + "You already have five cities. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             } else {
                 System.out.println("Your current cities: " + displayCity());
@@ -165,6 +167,7 @@ public class Civilization {
                                    + "You do not have "
                                    + "enough gold and resources. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             } else {
                 gold -= 5;
@@ -178,6 +181,7 @@ public class Civilization {
                                    + "You do not have "
                                    + "enough gold and resources. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             } else {
                 gold -= 50;
@@ -190,6 +194,7 @@ public class Civilization {
                 System.out.println("Invalid move: "
                                    + "You do not have enough military units. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             } else {
                 military -= 6;
