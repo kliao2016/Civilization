@@ -72,7 +72,7 @@ public class Civilization {
         if (happiness > 20.0) {
             resources += 5 * numCities();
         }
-        gold = gold + 3 * numCities();
+        gold += 3 * numCities();
         if (resources % 2 == 0) {
             happiness += 1;
         } else {
@@ -230,7 +230,7 @@ public class Civilization {
         int numCities = 0;
         for (int i = 0; i < cityArray.length; i++) {
             if (cityArray[i] != null) {
-                numCities = numCities + 1;
+                numCities += 1;
             }
         }
         return numCities;
