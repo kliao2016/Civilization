@@ -41,9 +41,6 @@ public class Civilization {
         System.out.println(" What would you like to name your first city?");
         cityArray[0] = keyboard.next();
         System.out.println("");
-        originalInfo();
-        System.out.println("");
-        turn();
 
         while (playing) {
             displayInfo();
