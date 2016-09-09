@@ -106,10 +106,15 @@ public class Civilization {
     public static void turn() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to do?"
-                           + "\n" + "1. Settle a City" + "\n"
-                           + "2. Demolish a City" + "\n" + "3. Build Militia"
-                           + "\n" + "4. Research Technology" + "\n"
-                           + "5. Attack Enemy City" + "\n" + "6. End Turn");
+                           + "\n" + "1. Settle a City (-15.5 gold)" + "\n"
+                           + "2. Demolish a City (+1.5 resources)"
+                           + "\n" + "3. Build Militia "
+                           + "(+1 military unit, -5 gold, -3 resources)"
+                           + "\n" + "4. Research Technology "
+                           + "(+1 tech point, -50 gold, -2 resources)"
+                           + "\n" + "5. Attack Enemy City "
+                           + "(-6 military units, -3 happiness, "
+                           + "-10 gold)" + "\n" + "6. End Turn");
         int turn = scanner.nextInt();
         System.out.println("");
 
@@ -147,6 +152,7 @@ public class Civilization {
                 System.out.println("Invalid move: "
                                    + "You must have at least one city. "
                                    + "Your turn is over.");
+                System.out.println("");
                 break;
             } else {
                 System.out.println("Cities you can demolish: "
