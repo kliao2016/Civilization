@@ -19,6 +19,7 @@ public class Civilization {
                            + "3. English (Queen Elizabeth 1)" + "\n"
                            + "4. Chinese (Wu Zetian)");
         int civ = keyboard.nextInt();
+        keyboard.nextLine();
         System.out.println("");
 
         switch (civ) {
@@ -39,7 +40,7 @@ public class Civilization {
         }
 
         System.out.println(" What would you like to name your first city?");
-        cityArray[0] = keyboard.next();
+        cityArray[0] = keyboard.nextLine();
         System.out.println("");
 
         while (playing) {
@@ -116,6 +117,7 @@ public class Civilization {
                            + "(-6 military units, -3 happiness, "
                            + "-10 gold)" + "\n" + "6. End Turn");
         int turn = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("");
 
         switch (turn) {
@@ -137,7 +139,7 @@ public class Civilization {
                 System.out.println("Your current cities: " + displayCity());
                 System.out.println("What would you "
                                    + "like to name your new city?");
-                String newName = scanner.next();
+                String newName = scanner.nextLine();
                 System.out.println("");
                 int freeIndex = 0;
                 while (freeIndex < 4 && cityArray[freeIndex] != null) {
