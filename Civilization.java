@@ -125,14 +125,14 @@ public class Civilization {
             if (gold < 15.5) {
                 System.out.println("Invalid move: "
                                    + "You do not have enough gold. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             }
             if (cityArray[cityArray.length - 1] != null) {
                 System.out.println("Invalid move: "
                                    + "You already have five cities. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             } else {
@@ -153,13 +153,14 @@ public class Civilization {
             if (cityArray[1] == null) {
                 System.out.println("Invalid move: "
                                    + "You must have at least one city. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             } else {
                 System.out.println("Cities you can demolish: "
                                    + displayCity() + "\n"
-                                   + "Which one would you like to demolish?");
+                                   + "Enter the name of the city "
+                                   + "you would like to demolish.");
                 String demCity = scanner.next();
                 System.out.println("");
 
@@ -185,7 +186,7 @@ public class Civilization {
                 System.out.println("Invalid move: "
                                    + "You do not have "
                                    + "enough gold and resources. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             } else {
@@ -199,7 +200,7 @@ public class Civilization {
                 System.out.println("Invalid move: "
                                    + "You do not have "
                                    + "enough gold and resources. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             } else {
@@ -212,7 +213,7 @@ public class Civilization {
             if (military < 6) {
                 System.out.println("Invalid move: "
                                    + "You do not have enough military units. "
-                                   + "Your turn is over.");
+                                   + "Please make another move.");
                 System.out.println("");
                 break;
             } else {
@@ -223,7 +224,8 @@ public class Civilization {
                 break;
             }
         case 6:
-            System.out.println("You have ended your turn.");
+            System.out.println("You have ended your turn. "
+                               + "Please make another move.");
             System.out.println("");
             break;
         default:
