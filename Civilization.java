@@ -54,18 +54,7 @@ public class Civilization {
         }
     }
 
-    public static void originalInfo() {
-        System.out.println("Your Current Information");
-        System.out.println("Cities: " + displayCity());
-        System.out.printf("Enemy Cities Attacked: " + numAttacks + "\n"
-                           + "Gold: %.2f\n" + "Resources: %.2f\n"
-                           + "Civilization Happiness: " + happiness + "\n"
-                           + "Military Units: " + military + "\n"
-                           + "Technology Points: " + techPoints
-                           + "\n", gold, resources);
-    }
-
-    public static void displayInfo() {
+    public static void displayInfo() { //method for updating user info
         resources += 1;
         if (happiness > 20.0) {
             resources += 5 * numCities();
@@ -104,7 +93,7 @@ public class Civilization {
         return city;
     }
 
-    public static void turn() {
+    public static void turn() { //method for making a move
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to do?"
                            + "\n" + "1. Settle a City (-15.5 gold)" + "\n"
