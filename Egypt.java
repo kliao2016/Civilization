@@ -72,8 +72,15 @@ public class Egypt {
     }
 
     public boolean buildPyramid(Settlement pSettle) {
+        boolean build = false;
+        if (pSettle.build(eTreasury.getCoins(), ePop, 500, 100)) {
+            build = true;
+            eTreasury.spend(500);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(10);
-        return pSettle.build(eTreasury.getCoins(), ePop, 500, 100);
+        return build;
     }
 
     public void practiceHieroglyphics() {

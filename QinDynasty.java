@@ -72,13 +72,27 @@ public class QinDynasty {
     }
 
     public boolean buildWall(Settlement wSettle) {
+        boolean build = false;
+        if (wSettle.build(qTreasury.getCoins(), qPop, 1000, 100)) {
+            build = true;
+            qTreasury.spend(1000);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(10);
-        return wSettle.build(qTreasury.getCoins(), qPop, 1000, 100);
+        return build;
     }
 
     public boolean buildHouse(Settlement hSettle) {
+        boolean build = false;
+        if (hSettle.build(qTreasury.getCoins(), qPop, 30, 8)) {
+            build = true;
+            qTreasury.spend(30);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(10);
-        return hSettle.build(qTreasury.getCoins(), qPop, 30, 8);
+        return build;
     }
 
     public void establishLegalism() {

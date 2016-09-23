@@ -72,18 +72,39 @@ public class RomanEmpire {
     }
 
     public boolean buildAqueduct(Settlement aSettle) {
+        boolean build = false;
+        if (aSettle.build(rTreasury.getCoins(), rPop, 250, 130)) {
+            build = true;
+            rTreasury.spend(250);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(10);
-        return aSettle.build(rTreasury.getCoins(), rPop, 250, 130);
+        return build;
     }
 
     public boolean buildBathHouse(Settlement bSettle) {
+        boolean build = false;
+        if (bSettle.build(rTreasury.getCoins(), rPop, 110, 20)) {
+            build = true;
+            rTreasury.spend(110);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(10);
-        return bSettle.build(rTreasury.getCoins(), rPop, 110, 20);
+        return build;
     }
 
     public boolean buildVilla(Settlement vSettle) {
+        boolean build = false;
+        if (vSettle.build(rTreasury.getCoins(), rPop, 80, 15)) {
+            build = true;
+            rTreasury.spend(80);
+        } else {
+            build = false;
+        }
         tech.increaseExperience(5);
-        return vSettle.build(rTreasury.getCoins(), rPop, 80, 15);
+        return build;
     }
 
     public void studyPhilosophy() {

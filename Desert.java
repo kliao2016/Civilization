@@ -12,10 +12,8 @@ public class Desert {
         if (lost == 1) {
             l = lost();
         }
-        if (l) {
-            lost();
-        } else {
-            findTreasure();
+        while (l) {
+            l = lost();
         }
         return rand.nextInt(500) + 1;
     }
