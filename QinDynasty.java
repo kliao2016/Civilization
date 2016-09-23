@@ -14,7 +14,7 @@ public class QinDynasty {
         qPop = new Population();
         qTreasury = new Treasury();
         cMine = new CoalMine();
-        river = new River("Yellow River");
+        river = new River("Yellow");
         tech = new Technology();
         strat = new Strategy();
         settleArr = new Settlement[10];

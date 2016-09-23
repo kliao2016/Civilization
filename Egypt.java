@@ -14,7 +14,7 @@ public class Egypt {
         ePop = new Population();
         eTreasury = new Treasury();
         cMine = new CoalMine();
-        river = new River("Nile River");
+        river = new River("Nile");
         tech = new Technology();
         strat = new Strategy();
         settleArr = new Settlement[10];
