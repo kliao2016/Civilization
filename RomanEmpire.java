@@ -14,7 +14,7 @@ public class RomanEmpire {
         rPop = new Population();
         rTreasury = new Treasury();
         cMine = new CoalMine();
-        river = new River("Tiber River");
+        river = new River("Tiber");
         tech = new Technology();
         strat = new Strategy();
         settleArr = new Settlement[10];
