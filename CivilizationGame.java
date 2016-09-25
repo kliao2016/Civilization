@@ -431,7 +431,7 @@ public class CivilizationGame {
     private static void explore(QinDynasty qin) throws Exception {
         System.out.println("\nYou have two terrains to explore: \n"
             + "1. Hills\n"
-            + "2. The " + qin.getRiver().getName() + "\n");
+            + "2. The " + qin.getRiver().getName() + " River\n");
         System.out.println("Make a choice!\n");
 
         int move = scan.nextInt();

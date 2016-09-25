@@ -1,10 +1,12 @@
 public class Settlement {
     private String name;
-    private Building[] buildingArr = new Building[0];
-    private int arrayPos = buildingArr.length;
+    private Building[] buildingArr;
+    private int arrayPos;
 
     public Settlement(String name) {
         this.name = name;
+         buildingArr = new Building[0];
+         arrayPos = buildingArr.length;
     }
 
     public String getName() {

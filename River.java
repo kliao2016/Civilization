@@ -24,14 +24,10 @@ public class River {
         return pos;
     }
 
-    public void posIncrease() {
-        pos += 1;
-    }
-
     public Fish getFish() {
         Fish fishTrip;
-        if (pos < 5) {
-            fishTrip = fishArray[++pos];
+        if (pos > 5) {
+            fishTrip = fishArray[--pos];
         } else {
             fishTrip = null;
         }
@@ -39,15 +35,13 @@ public class River {
     }
 
     public boolean replenishFish() {
-        Fish test = getFish();
-        if (test == null) {
+        if (pos == 0) {
             for (Fish fish: fishArray) {
                 fish = new Fish(rand.nextInt(5));
             }
-            pos = 0;
+            pos = fishArray.length;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

@@ -5,7 +5,7 @@ public class Population {
     private int warriors;
     private int civilians;
     private int happiness;
-    private Random rand = new Random();
+    private static Random rand = new Random();
 
     public Population() {
         warriors = 50;
