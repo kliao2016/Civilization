@@ -26,8 +26,8 @@ public class River {
 
     public Fish getFish() {
         Fish fishTrip;
-        if (pos > 5) {
-            fishTrip = fishArray[--pos];
+        if (pos < 5) {
+            fishTrip = fishArray[pos++];
         } else {
             fishTrip = null;
         }
@@ -35,11 +35,11 @@ public class River {
     }
 
     public boolean replenishFish() {
-        if (pos == 0) {
+        if (pos == fishArray.length) {
             for (Fish fish: fishArray) {
                 fish = new Fish(rand.nextInt(5));
             }
-            pos = fishArray.length;
+            pos = 0;
             return true;
         }
         return false;

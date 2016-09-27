@@ -62,11 +62,10 @@ public class Population {
     }
 
     public boolean canCook(Game g, CoalMine c) {
-        int index = 0;
-        while (c.getCoal() >= 10 && index < 4) {
-            c.burn();
-        }
-        if (index >= 4) {
+        if (c.getCoal() >= 40) {
+            for (int i = 0; i < 4; i++) {
+                c.burn();
+            }
             warriors += 40;
             civilians += 60;
             return true;
@@ -76,11 +75,10 @@ public class Population {
     }
 
     public boolean canCook(Fish f, CoalMine c1) {
-        int index = 0;
-        while (c1.getCoal() >= 10 && index < 4) {
-            c1.burn();
-        }
-        if (index >= 4) {
+        if (c1.getCoal() >= 40) {
+            for (int i = 0; i < 4; i++) {
+                c1.burn();
+            }
             warriors += 10;
             civilians += 15;
             return true;
