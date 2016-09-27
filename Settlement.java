@@ -5,8 +5,8 @@ public class Settlement {
 
     public Settlement(String name) {
         this.name = name;
-         buildingArr = new Building[1];
-         arrayPos = buildingArr.length;
+        buildingArr = new Building[1];
+        arrayPos = buildingArr.length;
     }
 
     public String getName() {

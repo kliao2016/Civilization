@@ -76,10 +76,10 @@ public class Egypt {
         if (pSettle.build(eTreasury.getCoins(), ePop, 500, 100)) {
             build = true;
             eTreasury.spend(500);
+            tech.increaseExperience(10);
         } else {
             build = false;
         }
-        tech.increaseExperience(10);
         return build;
     }
 

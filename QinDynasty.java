@@ -76,10 +76,10 @@ public class QinDynasty {
         if (wSettle.build(qTreasury.getCoins(), qPop, 1000, 100)) {
             build = true;
             qTreasury.spend(1000);
+            tech.increaseExperience(10);
         } else {
             build = false;
         }
-        tech.increaseExperience(10);
         return build;
     }
 
@@ -88,10 +88,10 @@ public class QinDynasty {
         if (hSettle.build(qTreasury.getCoins(), qPop, 30, 8)) {
             build = true;
             qTreasury.spend(30);
+            tech.increaseExperience(10);
         } else {
             build = false;
         }
-        tech.increaseExperience(10);
         return build;
     }
 
@@ -99,8 +99,6 @@ public class QinDynasty {
         if (qPop.getHappiness() >= 20) {
             tech.philosophize();
             qPop.decreaseHappiness(20);
-        } else {
-            qPop.decreaseHappiness(0);
         }
     }
 }

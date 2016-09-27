@@ -111,8 +111,6 @@ public class RomanEmpire {
         if (rPop.getHappiness() >= 10) {
             tech.philosophize();
             rPop.decreaseHappiness(10);
-        } else {
-            rPop.decreaseHappiness(0);
         }
     }
 }
