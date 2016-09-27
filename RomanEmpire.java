@@ -76,10 +76,10 @@ public class RomanEmpire {
         if (aSettle.build(rTreasury.getCoins(), rPop, 250, 130)) {
             build = true;
             rTreasury.spend(250);
+            tech.increaseExperience(10);
         } else {
             build = false;
         }
-        tech.increaseExperience(10);
         return build;
     }
 
@@ -88,10 +88,10 @@ public class RomanEmpire {
         if (bSettle.build(rTreasury.getCoins(), rPop, 110, 20)) {
             build = true;
             rTreasury.spend(110);
+            tech.increaseExperience(10);
         } else {
             build = false;
         }
-        tech.increaseExperience(10);
         return build;
     }
 
@@ -100,10 +100,10 @@ public class RomanEmpire {
         if (vSettle.build(rTreasury.getCoins(), rPop, 80, 15)) {
             build = true;
             rTreasury.spend(80);
+            tech.increaseExperience(5);
         } else {
             build = false;
         }
-        tech.increaseExperience(5);
         return build;
     }
 
