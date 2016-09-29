@@ -84,6 +84,7 @@ public class Egypt {
     }
 
     public void practiceHieroglyphics() {
+        tech.improveWriting();
         ePop.increaseHappiness(10);
     }
 }

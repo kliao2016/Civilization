@@ -592,7 +592,7 @@ public class CivilizationGame {
                 rome.getPopulation().setWarriors(
                         rome.getPopulation().getWarriors()
                     - warriorsLost);
-                rome.getStrategy().battle();
+                rome.getStrategy().siege();
                 result = warriorsLost;
             }
             System.out.print("You've chosen siege!!!");
