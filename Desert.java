@@ -7,13 +7,12 @@ public class Desert {
     private Scanner scan = new Scanner(System.in);
 
     public int findTreasure() {
-        int lost = rand.nextInt(10);
-        boolean l = false;
-        if (lost == 1) {
-            l = lost();
-        }
-        while (l) {
-            l = lost();
+        boolean l = true;
+        while (rand.nextInt(10) == 1) {
+            while (l) {
+                l = lost();
+            }
+            findTreasure();
         }
         return rand.nextInt(500) + 1;
     }
