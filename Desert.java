@@ -7,10 +7,10 @@ public class Desert {
     private Scanner scan = new Scanner(System.in);
 
     public int findTreasure() {
-        boolean lost = true;
+        boolean l = true;
         while (rand.nextInt(10) == 1) {
-            while (lost) {
-                lost = lost();
+            while (l) {
+                l = lost();
             }
             findTreasure();
         }
