@@ -17,7 +17,7 @@ public class QinDynasty extends Civilization {
         hills.replenishGame();
         int foodIncrease = hills.hunt().getHealth();
         makeFood(foodIncrease);
-        return "You explore your surroundings and increased your food supply by"
+        return "You explore your surroundings and increase your food supply by"
                 + " " + foodIncrease;
     }
 
