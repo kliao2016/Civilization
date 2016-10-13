@@ -1,9 +1,7 @@
 package model;
-import java.util.Random;
 
 public class Civilization {
 
-    private static Random rand = new Random();
     private String name;
     private Technology technology;
     private Strategy strategy;
