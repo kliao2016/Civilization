@@ -223,11 +223,14 @@ public class Model {
     public static boolean attackSelected(int r, int c) {
         MapObject attacked = map.getTile(r, c).getOccupant();
         if (selected.getOccupant() instanceof MilitaryUnit
+            && adjacentTo(r, c, "SELECTED")
             && !(map.isEmpty(r, c))
-            && map.getTile(r, c).getOccupant().getOwner() != playerCivilization
+            && attacked.getOwner() != playerCivilization
             && ((MilitaryUnit) selected.getOccupant()).getCanAttack()) {
             ((MilitaryUnit) selected.getOccupant()).attack(attacked);
-            attacked = null;
+            if (attacked.isDestroyed()) {
+                attacked = null;
+            }
             return true;
         }
         return false;
