@@ -1,6 +1,6 @@
 package model;
 
-public class Civilization {
+class Civilization {
 
     private String name;
     private Technology technology;

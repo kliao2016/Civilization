@@ -1,6 +1,6 @@
 package model;
 
-public class Egypt extends Civilization {
+class Egypt extends Civilization {
 
     private Desert desert = new Desert();
 

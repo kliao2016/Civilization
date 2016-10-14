@@ -1,6 +1,6 @@
 package model;
 
-public class FarmerUnit extends Unit implements Convertable {
+class FarmerUnit extends Unit implements Convertable {
 
     public FarmerUnit(Civilization owner) {
         super(owner);
@@ -8,7 +8,7 @@ public class FarmerUnit extends Unit implements Convertable {
 
     @Override
     public Building convert() {
-        return new Farm(getOwner());
+        return getOwner().getFarm();
     }
 
     @Override

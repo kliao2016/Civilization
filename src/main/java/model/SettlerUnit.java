@@ -1,6 +1,6 @@
 package model;
 
-public class SettlerUnit extends Unit implements Convertable {
+class SettlerUnit extends Unit implements Convertable {
 
     private String townName;
 
@@ -12,7 +12,7 @@ public class SettlerUnit extends Unit implements Convertable {
     @Override
     public Building convert() {
         getOwner().incrementNumSettlements();
-        return new Settlement(getOwner(), townName);
+        return getOwner().getSettlement(townName);
     }
 
     @Override

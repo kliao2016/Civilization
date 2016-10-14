@@ -1,6 +1,6 @@
 package model;
 
-public class AnglerUnit extends Unit implements Convertable {
+class AnglerUnit extends Unit implements Convertable {
 
     public AnglerUnit(Civilization owner) {
         super(owner);
@@ -8,7 +8,7 @@ public class AnglerUnit extends Unit implements Convertable {
 
     @Override
     public Building convert() {
-        return new FishingShack(getOwner());
+        return getOwner().getFishingShack();
     }
 
     @Override

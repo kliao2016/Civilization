@@ -1,6 +1,6 @@
 package model;
 
-public class RangedUnit extends MilitaryUnit {
+class RangedUnit extends MilitaryUnit {
 
     public RangedUnit(Civilization owner) {
         super(100, owner, 10, 10, 14, 5, 0, 30);

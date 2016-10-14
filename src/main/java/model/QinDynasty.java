@@ -1,6 +1,6 @@
 package model;
 
-public class QinDynasty extends Civilization {
+class QinDynasty extends Civilization {
 
     private Hills hills = new Hills();
 

@@ -1,6 +1,6 @@
 package model;
 
-public class MasterBuilderUnit extends Unit implements Convertable {
+class MasterBuilderUnit extends Unit implements Convertable {
 
     public MasterBuilderUnit(Civilization owner) {
         super(owner);
@@ -8,7 +8,7 @@ public class MasterBuilderUnit extends Unit implements Convertable {
 
     @Override
     public Building convert() {
-        return new Landmark(getOwner());
+        return getOwner().getLandmark();
     }
 
     @Override

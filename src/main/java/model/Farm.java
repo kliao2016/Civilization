@@ -1,6 +1,6 @@
 package model;
 
-public class Farm extends Building {
+class Farm extends Building {
 
     public Farm(Civilization owner) {
         super(200, owner, 0, 0, 10, 0, 0, 10);
