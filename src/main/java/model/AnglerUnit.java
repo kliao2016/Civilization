@@ -13,7 +13,7 @@ class AnglerUnit extends Unit implements Convertable {
 
     @Override
     public boolean canConvert(TileType type) {
-        if (type.getSymbol() == 'W') {
+        if (type == TileType.WATER) {
             return true;
         }
         return false;

@@ -17,7 +17,7 @@ class SettlerUnit extends Unit implements Convertable {
 
     @Override
     public boolean canConvert(TileType type) {
-        if (type.getSymbol() == 'P') {
+        if (type == TileType.PLAINS) {
             return true;
         }
         return false;

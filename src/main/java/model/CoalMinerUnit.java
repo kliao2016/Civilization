@@ -13,7 +13,7 @@ class CoalMinerUnit extends Unit implements Convertable {
 
     @Override
     public boolean canConvert(TileType type) {
-        if (type.getSymbol() == 'H') {
+        if (type == TileType.HILLS) {
             return true;
         }
         return false;
