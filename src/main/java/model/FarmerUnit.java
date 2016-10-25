@@ -1,7 +1,18 @@
 package model;
 
+/**
+ * Represents a Farmer unit that can build a Farm.
+ *
+ * @author Jim Harris
+ * @version 1.0
+ */
 class FarmerUnit extends Unit implements Convertable {
 
+    /**
+     * Public constructor
+     *
+     * @param owner The owner of this unit.
+     */
     public FarmerUnit(Civilization owner) {
         super(owner);
     }
@@ -13,10 +24,7 @@ class FarmerUnit extends Unit implements Convertable {
 
     @Override
     public boolean canConvert(TileType type) {
-        if (type == TileType.PLAINS) {
-            return true;
-        }
-        return false;
+        return type == TileType.PLAINS;
     }
 
     @Override
