@@ -16,6 +16,9 @@ class MySet<E> implements SimpleSet<E> {
             if (setArray[i].equals(e)) {
                 eIndex = i;
             }
+            if (setArray[i] == null && setArray[i] == e) {
+                eIndex = i;
+            }
         }
         return eIndex;
     }
@@ -44,13 +47,25 @@ class MySet<E> implements SimpleSet<E> {
     public E remove(E e) throws ElementDoesNotExistException {
         E[] result = (E[]) new Object[setArray.length - 1];
         if (contains(e)) {
-            if (setArray[0].equals(e)) {
+            if (setArray[0] != null && setArray[0].equals(e)) {
                 for (int i = 1; i < setArray.length; i++) {
                     result[i - 1] = setArray[i];
                 }
                 setArray = result;
             }
-            else if (setArray[setArray.length - 1].equals(e)) {
+            else if (setArray[setArray.length - 1] != null
+                     && setArray[setArray.length - 1].equals(e)) {
+                for (int i = 0; i < setArray.length - 1; i++) {
+                    result[i] = setArray[i];
+                    setArray = result;
+                }
+                setArray = result;
+            } else if (setArray[0] == null && e == null) {
+                for (int i = 1; i < setArray.length; i++) {
+                    result[i - 1] = setArray[i];
+                }
+                setArray = result;
+            } else if (setArray[setArray.length - 1] == null && e == null) {
                 for (int i = 0; i < setArray.length - 1; i++) {
                     result[i] = setArray[i];
                     setArray = result;
@@ -74,8 +89,11 @@ class MySet<E> implements SimpleSet<E> {
 
     @Override
     public boolean contains(E e) {
-        for (E element: setArray) {
-            if (element.equals(e)) {
+        for (int i = 0; i < setArray.length; i++) {
+            if (setArray[i] != null && setArray[i].equals(e)) {
+                return true;
+            }
+            if (setArray[i] == null && e == null) {
                 return true;
             }
         }
@@ -133,9 +151,13 @@ class MySet<E> implements SimpleSet<E> {
             result = "[]";
         }
         for (int i = 0; i < setArray.length; i++) {
-            if (i == setArray.length - 1) {
+            if (setArray[i] == null && i != setArray.length - 1) {
+                result += "null, ";
+            } else if (setArray[i] == null && i == setArray.length - 1) {
+                result += "null ]";
+            } else if (i == setArray.length - 1 && setArray[i] != null) {
                 result += setArray[i].toString() + " ]";
-            } else {
+            } else if (i != setArray.length - 1 && setArray[i] != null) {
                 result += setArray[i].toString() + ", ";
             }
         }
