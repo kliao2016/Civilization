@@ -74,7 +74,7 @@ class FishingShack extends Building {
      */
     public boolean replenishFish() {
         if (fish.isEmpty()) {
-            for(int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 fish.add(new Fish(rand.nextInt(5), rand.nextInt(5)));
             }
             return true;

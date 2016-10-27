@@ -53,8 +53,7 @@ class MySet<E> implements SimpleSet<E> {
                     result[i - 1] = setArray[i];
                 }
                 setArray = result;
-            }
-            else if (setArray[setArray.length - 1] != null
+            } else if (setArray[setArray.length - 1] != null
                      && setArray[setArray.length - 1].equals(e)) {
                 for (int i = 0; i < setArray.length - 1; i++) {
                     result[i] = setArray[i];
