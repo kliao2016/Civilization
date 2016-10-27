@@ -1,4 +1,5 @@
 package model;
+
 import java.util.Random;
 
 class MySet<E> implements SimpleSet<E> {
