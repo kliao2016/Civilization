@@ -26,9 +26,12 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
     }
 
     private class MySetIterator implements Iterator<E> {
+
+        private int pointer = 0;
+
         @Override
         public boolean hasNext() {
-            if (data[numElements] != null) {
+            if (numElements > pointer) {
                 return true;
             }
             return false;
@@ -40,17 +43,16 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
                 throw new NoSuchElementException(
                     "There are no more elements in the set.");
             }
-            return data[numElements];
+            return data[pointer++];
         }
 
         @Override
         public void remove() throws IllegalStateException {
-            if (hasNext()) {
-                data[numElements] = null;
-                numElements -= 1;
-            } else {
+            if (pointer <= 0) {
                 throw new IllegalStateException(
-                    "There are no elements to remove");
+                    "There are no more elements to remove");
+            } else {
+                data[--pointer] = null;
             }
         }
     }
