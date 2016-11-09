@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 3.0
  * @author Taylor Hartman, Ryan Voor, Jim Harris
  */
-class Civilization {
+class Civilization implements Comparable<Civilization> {
     private static Random rand = new Random();
 
     private String name;
@@ -30,6 +30,12 @@ class Civilization {
      */
     public Civilization(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Civilization other) {
+        return this.getStrategy().getStrategyLevel()
+               - other.getStrategy().getStrategyLevel();
     }
 
     /**
