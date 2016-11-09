@@ -1,6 +1,7 @@
 package model;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 /**
  * A wrapper class for all of the Objects needed in the game. Also has methods
  * to facilitate interactions between these objects, and methods to interface
@@ -182,7 +183,14 @@ public class Model {
         case 5:
             int overallRank = 1;
             System.out.println("People with the Fanciest Crowns");
-            Collections.sort(civs, new OverallComparator());
+            Collections.sort(civs, new Comparator<Civilization>() {
+                public int compare(Civilization a, Civilization b) {
+                    if (a.getNumSettlements() - b.getNumSettlements() == 0) {
+                        return a.compareTo(b);
+                    }
+                    return a.getNumSettlements() - b.getNumSettlements();
+                }
+            });
             for (int i = civs.size() - 1; i >= 0; i--) {
                 Civilization print = civs.get(i);
                 System.out.println(overallRank + ") "

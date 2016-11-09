@@ -38,6 +38,29 @@ class Civilization implements Comparable<Civilization> {
                - other.getStrategy().getStrategyLevel();
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof Civilization)) {
+            return false;
+        }
+        Civilization that = (Civilization) other;
+        return this.getStrategy().getStrategyLevel()
+               == that.getStrategy().getStrategyLevel();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + ((int) this.getStrategy().getStrategyLevel());
+        return result;
+    }
+
     /**
      * Explores the surroundings of the Civilization and gives a nifty bonus!
      *
