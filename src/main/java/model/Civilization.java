@@ -22,7 +22,7 @@ class Civilization implements Comparable<Civilization> {
     private int food = 50;
     private int resources = 50;
     private int happiness = 50;
-
+    
     /**
      * Public constructor.
      *
