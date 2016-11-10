@@ -182,7 +182,7 @@ public class Model {
             break;
         case 5:
             int overallRank = 1;
-            System.out.println("People with the Fanciest Crowns");
+            System.out.println("People with the Fanciest Crowns:");
             Collections.sort(civs, new Comparator<Civilization>() {
                 public int compare(Civilization a, Civilization b) {
                     if (a.getNumSettlements() - b.getNumSettlements() == 0) {
