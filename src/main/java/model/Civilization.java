@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 3.0
  * @author Taylor Hartman, Ryan Voor, Jim Harris
  */
-class Civilization implements Comparable<Civilization> {
+public class Civilization {
     private static Random rand = new Random();
 
     private String name;
@@ -32,35 +32,6 @@ class Civilization implements Comparable<Civilization> {
         this.name = name;
     }
 
-    @Override
-    public int compareTo(Civilization other) {
-        return this.getStrategy().getStrategyLevel()
-               - other.getStrategy().getStrategyLevel();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof Civilization)) {
-            return false;
-        }
-        Civilization that = (Civilization) other;
-        return this.getStrategy().getStrategyLevel()
-               == that.getStrategy().getStrategyLevel();
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + ((int) this.getStrategy().getStrategyLevel());
-        return result;
-    }
-
     /**
      * Explores the surroundings of the Civilization and gives a nifty bonus!
      *
@@ -72,12 +43,6 @@ class Civilization implements Comparable<Civilization> {
         return "You explore your surroundings and acquire 20 resources!";
     }
 
-    /**
-     * @return a String containing all of the skills this Civilization owns.
-     */
-    public String getSkillsString() {
-        return technology.getSkills().toString();
-    }
 
     /**
      * @return a String containing the name of the Civilization.
@@ -301,10 +266,5 @@ class Civilization implements Comparable<Civilization> {
      */
     public Landmark getLandmark() {
         return new Landmark(this);
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 }

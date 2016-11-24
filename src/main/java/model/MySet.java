@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Random;
 
 /**
@@ -10,7 +8,7 @@ import java.util.Random;
  * @author Ryan Voor
  * @version 1.0
  */
-class MySet<E> implements SimpleSet<E>, Iterable<E> {
+class MySet<E> implements SimpleSet<E> {
 
     private E[] data;
     private int numElements;
@@ -23,43 +21,6 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
     public MySet() {
         this.data = (E[]) new Object[startingSize];
         this.numElements = 0;
-    }
-
-    private class MySetIterator implements Iterator<E> {
-
-        private int pointer = 0;
-
-        @Override
-        public boolean hasNext() {
-            if (numElements > pointer) {
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public E next() throws NoSuchElementException {
-            if (!hasNext()) {
-                throw new NoSuchElementException(
-                    "There are no more elements in the set.");
-            }
-            return data[pointer++];
-        }
-
-        @Override
-        public void remove() throws IllegalStateException {
-            if (pointer <= 0) {
-                throw new IllegalStateException(
-                    "There are no more elements to remove");
-            } else {
-                data[--pointer] = null;
-            }
-        }
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new MySetIterator();
     }
 
     @Override
@@ -90,7 +51,7 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
             if (data[i].equals(e)) {
                 E toBeReturned = data[i];
                 data[i] = null;
-                for (int j = i; j < numElements - 1; j++) {
+                for (int j = i; j < numElements; j++) {
                     data[j] = data[j + 1];
                 }
                 numElements--;
@@ -113,11 +74,9 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
         E[] results = (E[]) new Object[elements.length];
         int counter = 0;
         for (E element: elements) {
-            // this guard is in case there are duplicate elements in the
-            // parameter array
-            if (this.contains(element)) {
-                results[counter++] = this.remove(element);
-            }
+            // hypothetically a ElementDoesNotExistException should never
+            // get thrown from this call since we checked above
+            results[counter++] = this.remove(element);
         }
         return results;
     }
