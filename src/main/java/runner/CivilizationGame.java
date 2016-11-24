@@ -13,6 +13,7 @@ import model.RomanEmpire;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.GridFX;
 
 /**
  * Created by Tian-Yo Yang on 11/11/2016.
@@ -27,9 +28,9 @@ public class CivilizationGame extends Application {
         primaryStage.setTitle("CS1331 Civilization");
         primaryStage.setScene(startGame());
         NewSettlementPrompt.getDialogButton().setOnAction(e -> {
-            GameScreen gameScreen = new GameScreen();
-            Scene game = new Scene(gameScreen.getGameLayout());
-            primaryStage.setScene(game);
+                GameScreen gameScreen = new GameScreen();
+                Scene game = new Scene(gameScreen.getGameLayout());
+                primaryStage.setScene(game);
         });
         primaryStage.show();
     }
@@ -50,28 +51,26 @@ public class CivilizationGame extends Application {
     public Scene startGame() {
         StartScreen startScreen = new StartScreen();
         startScreen.getStartButton().setOnMousePressed(e -> {
-            NewSettlementPrompt.newSettlementAlert();
-            if (startScreen.getCivList().getSelectionModel().getSelectedItem()
-                == CivEnum.ANCIENT_EGYPT) {
+            GridFX grid = GameScreen.getGameGrid();
+            CivEnum selected = startScreen.getCivList().getSelectionModel()
+                                                       .getSelectedItem();
+            if (selected == CivEnum.ANCIENT_EGYPT) {
                 Egypt egypt = new Egypt();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                GameScreen.getGameGrid().getMap()
-                                        .putSettlement(settleName, egypt, 5, 5);
+                grid.getMap().putSettlement(settleName, egypt, 5, 5);
                 GameController.setCivilization(egypt);
-            } else if (startScreen.getCivList().getSelectionModel()
-                       .getSelectedItem()== CivEnum.QIN_DYNASTY) {
+            } else if (selected == CivEnum.QIN_DYNASTY) {
                 QinDynasty qin = new QinDynasty();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                GameScreen.getGameGrid().getMap()
-                                        .putSettlement(settleName, qin, 5, 5);
+                grid.getMap().putSettlement(settleName, qin, 5, 5);
                 GameController.setCivilization(qin);
             } else {
                 RomanEmpire rome = new RomanEmpire();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                GameScreen.getGameGrid().getMap()
-                                        .putSettlement(settleName, rome, 5, 5);
+                grid.getMap().putSettlement(settleName, rome, 5, 5);
                 GameController.setCivilization(rome);
             }
+            NewSettlementPrompt.newSettlementAlert();
         });
         Scene start = new Scene(startScreen.getStartLayout());
         return start;

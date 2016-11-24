@@ -10,12 +10,14 @@ public class GameScreen extends BorderPane {
 
     private BorderPane gameLayout = new BorderPane();
     private static GridFX gameGrid = GridFX.getInstance();
+    private ResourcesMenu menuBar = new ResourcesMenu();
     /**
      * Creates a new view into the game. this layout should include
      * the rescource bar, grid map, and action menus
      *
      */
     public GameScreen() {
+        gameLayout.setTop(menuBar.getRootNode());
         gameLayout.setCenter(gameGrid);
     }
 
@@ -23,11 +25,11 @@ public class GameScreen extends BorderPane {
      * This method should update the gridfx and the resource bar
      */
     public void update() {
-      //TODO
+        gameGrid.update();
     }
     /**
     * this method should return the resource menu
-    * @return reosuce menu
+    * @return resource menu
     */
     public static ResourcesMenu getResources() {
         return null;
