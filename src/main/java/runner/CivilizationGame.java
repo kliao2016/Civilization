@@ -1,10 +1,11 @@
 package runner;
 
 import controller.GameController;
-import view.NewSettlementPrompt;
-import view.StartScreen;
 import view.CivEnum;
 import view.GameScreen;
+import view.GridFX;
+import view.NewSettlementPrompt;
+import view.StartScreen;
 import model.Bandit;
 import model.Egypt;
 import model.Map;
@@ -13,7 +14,6 @@ import model.RomanEmpire;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.GridFX;
 
 /**
  * Created by Tian-Yo Yang on 11/11/2016.
@@ -51,23 +51,22 @@ public class CivilizationGame extends Application {
     public Scene startGame() {
         StartScreen startScreen = new StartScreen();
         startScreen.getStartButton().setOnMousePressed(e -> {
-            GridFX grid = GameScreen.getGameGrid();
             CivEnum selected = startScreen.getCivList().getSelectionModel()
                                                        .getSelectedItem();
             if (selected == CivEnum.ANCIENT_EGYPT) {
                 Egypt egypt = new Egypt();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                grid.getMap().putSettlement(settleName, egypt, 5, 5);
+                GridFX.getMap().putSettlement(settleName, egypt, 5, 5);
                 GameController.setCivilization(egypt);
             } else if (selected == CivEnum.QIN_DYNASTY) {
                 QinDynasty qin = new QinDynasty();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                grid.getMap().putSettlement(settleName, qin, 5, 5);
+                GridFX.getMap().putSettlement(settleName, qin, 5, 5);
                 GameController.setCivilization(qin);
             } else {
                 RomanEmpire rome = new RomanEmpire();
                 String settleName = NewSettlementPrompt.getText().getResult();
-                grid.getMap().putSettlement(settleName, rome, 5, 5);
+                GridFX.getMap().putSettlement(settleName, rome, 5, 5);
                 GameController.setCivilization(rome);
             }
             NewSettlementPrompt.newSettlementAlert();

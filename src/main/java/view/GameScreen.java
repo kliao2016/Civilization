@@ -9,8 +9,8 @@ import javafx.scene.layout.BorderPane;
 public class GameScreen extends BorderPane {
 
     private BorderPane gameLayout = new BorderPane();
-    private static GridFX gameGrid = GridFX.getInstance();
-    private ResourcesMenu menuBar = new ResourcesMenu();
+    private GridFX gameGrid = GridFX.getInstance();
+    private static ResourcesMenu menuBar = new ResourcesMenu();
     /**
      * Creates a new view into the game. this layout should include
      * the rescource bar, grid map, and action menus
@@ -32,15 +32,11 @@ public class GameScreen extends BorderPane {
     * @return resource menu
     */
     public static ResourcesMenu getResources() {
-        return null;
+        return menuBar;
     }
 
     public BorderPane getGameLayout() {
         return gameLayout;
-    }
-
-    public static GridFX getGameGrid() {
-        return gameGrid;
     }
     /**
      * This method switches menus based on passed in game state.

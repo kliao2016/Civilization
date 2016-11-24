@@ -9,25 +9,25 @@ public class ResourcesMenu {
 
     private HBox resBox = new HBox(8);
     private Civilization playerCiv = GameController.getCivilization();
-    private Text strat = new Text();
-    private Text res = new Text();
-    private Text settle = new Text();
-    private Text money = new Text();
-    private Text food = new Text();
-    private Text happy = new Text();
+    private Text strat;
+    private Text res;
+    private Text settle;
+    private Text money;
+    private Text food;
+    private Text happy;
 
     /**
     * creates a resource bar and display the current state of
     * your civilization's resouces
     */
     public ResourcesMenu() {
-        strat.setText("Strat Level: "
-                              + playerCiv.getStrategy().getStrategyLevel());
-        res.setText("Resources: " + playerCiv.getResources());
-        settle.setText("Settlements: " + playerCiv.getNumSettlements());
-        money.setText("Money: " + playerCiv.getTreasury().getCoins());
-        food.setText("Food: " + playerCiv.getFood());
-        happy.setText("Happiness: " + playerCiv.getHappiness());
+        strat = new Text("Strat Level: "
+                         + playerCiv.getStrategy().getStrategyLevel());
+        res = new Text("Resources: " + playerCiv.getResources());
+        settle = new Text("Settlements: " + playerCiv.getNumSettlements());
+        money = new Text("Money: " + playerCiv.getTreasury().getCoins());
+        food = new Text("Food: " + playerCiv.getFood());
+        happy = new Text("Happiness: " + playerCiv.getHappiness());
         resBox.getChildren().addAll(strat, res, settle, money, food, happy);
     }
     /**
