@@ -23,7 +23,7 @@ public class MilitaryMenu extends AbstractMenu {
                                                                  .getOccupant();
                 GameController.attacking();
                 if (occup.isMilitaryUnit()
-                    && !((MilitaryUnit) occup).getCanAttack()){
+                    && !((MilitaryUnit) occup).getCanAttack()) {
                     NoActionAlert.displayAlert();
                 }
                 GameController.updateResourcesBar();
