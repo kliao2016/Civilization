@@ -39,6 +39,10 @@ public class CivilizationGame extends Application {
         launch(args);
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
     /**
     * This method is responsible for setting the scene to the corresponding
     * layout.
@@ -56,19 +60,19 @@ public class CivilizationGame extends Application {
                     Egypt egypt = new Egypt();
                     String name = NewSettlementPrompt.getText().getResult();
                     GridFX.getMap().putSettlement(name, egypt, 5, 5);
-                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(egypt);
                 } else if (selected == CivEnum.QIN_DYNASTY) {
                     QinDynasty qin = new QinDynasty();
                     String name = NewSettlementPrompt.getText().getResult();
                     GridFX.getMap().putSettlement(name, qin, 5, 5);
-                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(qin);
                 } else {
                     RomanEmpire rome = new RomanEmpire();
                     String name = NewSettlementPrompt.getText().getResult();
                     GridFX.getMap().putSettlement(name, rome, 5, 5);
-                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(rome);
                 }
                 GameScreen gameScreen = new GameScreen();
