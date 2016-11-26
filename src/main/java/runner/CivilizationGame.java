@@ -59,19 +59,19 @@ public class CivilizationGame extends Application {
                 if (selected == CivEnum.ANCIENT_EGYPT) {
                     Egypt egypt = new Egypt();
                     String name = NewSettlementPrompt.getText().getResult();
-                    GridFX.getMap().putSettlement(name, egypt, 5, 5);
+                    GridFX.getMap().putSettlement(name, egypt, 0, 9);
                     GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(egypt);
                 } else if (selected == CivEnum.QIN_DYNASTY) {
                     QinDynasty qin = new QinDynasty();
                     String name = NewSettlementPrompt.getText().getResult();
-                    GridFX.getMap().putSettlement(name, qin, 5, 5);
+                    GridFX.getMap().putSettlement(name, qin, 0, 9);
                     GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(qin);
                 } else {
                     RomanEmpire rome = new RomanEmpire();
                     String name = NewSettlementPrompt.getText().getResult();
-                    GridFX.getMap().putSettlement(name, rome, 5, 5);
+                    GridFX.getMap().putSettlement(name, rome, 0, 9);
                     GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(rome);
                 }
