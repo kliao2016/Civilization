@@ -7,7 +7,7 @@ import model.Civilization;
 
 public class ResourcesMenu {
 
-    private HBox resBox = new HBox(8);
+    private HBox resBox = new HBox(15);
     private Civilization playerCiv = GameController.getCivilization();
     private Text strat;
     private Text res;
