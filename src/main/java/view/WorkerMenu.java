@@ -2,7 +2,6 @@ package view;
 
 import controller.GameController;
 import controller.TileType;
-//import model.Convertable;
 import model.MapObject;
 import model.TerrainTile;
 import javafx.scene.control.Button;
