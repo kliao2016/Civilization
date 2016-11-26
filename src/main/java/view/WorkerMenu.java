@@ -39,27 +39,28 @@ public class WorkerMenu extends AbstractMenu {
                 if (occupant.isWorker()
                     && occupant instanceof AnglerUnit
                     && ((AnglerUnit) occupant).canConvert(type)) {
-                    ((AnglerUnit) occupant).convert();
+                    tile.setOccupant(((AnglerUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
                 } else if (occupant.isWorker()
                            && occupant instanceof CoalMinerUnit
                            && ((CoalMinerUnit) occupant).canConvert(type)) {
-                    ((CoalMinerUnit) occupant).convert();
+                    tile.setOccupant(((CoalMinerUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
                 } else if (occupant.isWorker()
                            && occupant instanceof FarmerUnit
                            && ((FarmerUnit) occupant).canConvert(type)) {
-                    ((FarmerUnit) occupant).convert();
+                    tile.setOccupant(((FarmerUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
                 } else if (occupant.isWorker()
                            && occupant instanceof MasterBuilderUnit
                            && ((MasterBuilderUnit) occupant).canConvert(type)) {
-                    ((MasterBuilderUnit) occupant).convert();
+                    tile.setOccupant(((MasterBuilderUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
+                    System.out.println("debug");
                 } else if (occupant.isWorker()
                            && occupant instanceof SettlerUnit
                            && ((SettlerUnit) occupant).canConvert(type)) {
-                    ((SettlerUnit) occupant).convert();
+                    tile.setOccupant(((SettlerUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
                 } else {
                     NoActionAlert.displayAlert();
