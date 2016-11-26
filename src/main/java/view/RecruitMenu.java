@@ -102,10 +102,11 @@ public class RecruitMenu extends AbstractMenu {
                         GameController.updateResourcesBar();
                     }
                 } else if (sel.equals(COALS)) {
-                    if (!owner.getCoalMinerUnit().isAffordable()) {
+                    Unit recruit = owner.getSiegeUnit();
+                    if (!recruit.isAffordable()) {
                         NoActionAlert.displayAlert();
                     } else {
-                        owner.getCoalMinerUnit().applyInitialCosts();
+                        recruit.applyInitialCosts();
                         GameController.getLastClicked().getTile().setOccupant(
                             owner.getCoalMinerUnit());
                         GameController.getLastClicked().updateTileView();

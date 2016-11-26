@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
  * @author Jim Harris
  * @version 1.0
  */
-public class CoalMinerUnit extends Unit implements Convertable {
+class CoalMinerUnit extends Unit implements Convertable {
 
     /**
      * Public constructor

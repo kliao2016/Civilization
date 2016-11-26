@@ -2,15 +2,11 @@ package view;
 
 import controller.GameController;
 import controller.TileType;
+import model.Convertable;
 import model.MapObject;
 import model.TerrainTile;
-import javafx.scene.control.Button;
-import model.AnglerUnit;
-import model.CoalMinerUnit;
-import model.FarmerUnit;
-import model.MasterBuilderUnit;
-import model.SettlerUnit;
 import model.Unit;
+import javafx.scene.control.Button;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -40,29 +36,8 @@ public class WorkerMenu extends AbstractMenu {
                 MapObject occupant = tile.getOccupant();
                 TileType type = tile.getType();
                 if (occupant.isWorker()
-                    && occupant instanceof AnglerUnit
-                    && ((AnglerUnit) occupant).canConvert(type)) {
-                    tile.setOccupant(((AnglerUnit) occupant).convert());
-                    GameController.getLastClicked().updateTileView();
-                } else if (occupant.isWorker()
-                           && occupant instanceof CoalMinerUnit
-                           && ((CoalMinerUnit) occupant).canConvert(type)) {
-                    tile.setOccupant(((CoalMinerUnit) occupant).convert());
-                    GameController.getLastClicked().updateTileView();
-                } else if (occupant.isWorker()
-                           && occupant instanceof FarmerUnit
-                           && ((FarmerUnit) occupant).canConvert(type)) {
-                    tile.setOccupant(((FarmerUnit) occupant).convert());
-                    GameController.getLastClicked().updateTileView();
-                } else if (occupant.isWorker()
-                           && occupant instanceof MasterBuilderUnit
-                           && ((MasterBuilderUnit) occupant).canConvert(type)) {
-                    tile.setOccupant(((MasterBuilderUnit) occupant).convert());
-                    GameController.getLastClicked().updateTileView();
-                } else if (occupant.isWorker()
-                           && occupant instanceof SettlerUnit
-                           && ((SettlerUnit) occupant).canConvert(type)) {
-                    tile.setOccupant(((SettlerUnit) occupant).convert());
+                    && ((Convertable) occupant).canConvert(type)) {
+                    tile.setOccupant(((Convertable) occupant).convert());
                     GameController.getLastClicked().updateTileView();
                 } else {
                     NoActionAlert.displayAlert();
