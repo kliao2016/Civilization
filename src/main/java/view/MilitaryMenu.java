@@ -4,7 +4,6 @@ import controller.GameController;
 import javafx.scene.control.Button;
 import model.MapObject;
 import model.MilitaryUnit;
-
 /**
  * Created by William on 11/11/2016.
  */
@@ -35,10 +34,12 @@ public class MilitaryMenu extends AbstractMenu {
                 GameController.moving();
                 if (occup.isMilitaryUnit()
                     && !((MilitaryUnit) occup)
-                    .canMove(((MilitaryUnit) occup).getBaseEndurance())) {
+                    .canMove(1)) {
                     NoActionAlert.displayAlert();
                 }
             });
+        attackButton.setStyle("-fx-base: #FF0000;");
+        moveButton.setStyle("-fx-base: #00FF00");
         addMenuItem(attackButton);
         addMenuItem(moveButton);
     }

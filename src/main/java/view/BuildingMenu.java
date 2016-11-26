@@ -51,6 +51,8 @@ public class BuildingMenu extends AbstractMenu {
                     }
                 }
             });
+        investButton.setStyle("-fx-base: #00FF00;");
+        demolishButton.setStyle("-fx-base: #FF0000");
         addMenuItem(investButton);
         addMenuItem(demolishButton);
     }

@@ -11,6 +11,7 @@ import model.CoalMinerUnit;
 import model.FarmerUnit;
 import model.MasterBuilderUnit;
 import model.SettlerUnit;
+import model.Unit;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -26,9 +27,12 @@ public class WorkerMenu extends AbstractMenu {
     */
     public WorkerMenu() {
         moveButton.setOnMousePressed(e -> {
+                MapObject occup = GameController.getLastClicked().getTile()
+                                                                 .getOccupant();
                 GameController.moving();
-                if (GameController.getGameState()
-                    != GameController.GameState.NEUTRAL) {
+                if (occup instanceof Unit
+                    && !((Unit) occup)
+                    .canMove(1)) {
                     NoActionAlert.displayAlert();
                 }
             });
@@ -56,7 +60,6 @@ public class WorkerMenu extends AbstractMenu {
                            && ((MasterBuilderUnit) occupant).canConvert(type)) {
                     tile.setOccupant(((MasterBuilderUnit) occupant).convert());
                     GameController.getLastClicked().updateTileView();
-                    System.out.println("debug");
                 } else if (occupant.isWorker()
                            && occupant instanceof SettlerUnit
                            && ((SettlerUnit) occupant).canConvert(type)) {
@@ -67,6 +70,8 @@ public class WorkerMenu extends AbstractMenu {
                 }
                 GameController.updateResourcesBar();
             });
+        moveButton.setStyle("-fx-base: #00FF00");
+        convertButton.setStyle("-fx-base: #FF00FF");
         addMenuItem(moveButton);
         addMenuItem(convertButton);
     }

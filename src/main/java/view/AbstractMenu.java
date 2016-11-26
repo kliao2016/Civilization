@@ -43,6 +43,8 @@ public class AbstractMenu {
                     System.exit(0);
                 }
             });
+        exploreButton.setStyle("-fx-base: #FFFF00");
+        endTurnButton.setStyle("-fx-base: #00FFFF");
         menu.setPrefWidth(PREFWIDTH);
         updateItems();
     }
