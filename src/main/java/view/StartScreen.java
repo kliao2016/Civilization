@@ -1,8 +1,5 @@
 package view;
 
-import model.Civilization;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -30,11 +27,6 @@ public class StartScreen extends StackPane {
                                 "File:./src/main/java/view/civ_background.png";
     private ImageView startImage;
     private ListView<CivEnum> civList = new ListView<>();
-    // private ObservableList<CivEnum> passList = FXCollections
-    //                             .observableArrayList(CivEnum.ANCIENT_EGYPT,
-    //                                                  CivEnum.QIN_DYNASTY,
-    //                                                  CivEnum.ROMAN_EMPIRE);
-    private StackPane startLayout;
     private VBox startBox = new VBox();
     private Label startLabel = new Label("Select a Civilization to Begin");
 
@@ -49,8 +41,8 @@ public class StartScreen extends StackPane {
 
         //List
         civList.getItems().addAll(CivEnum.ANCIENT_EGYPT,
-                                CivEnum.QIN_DYNASTY,
-                                CivEnum.ROMAN_EMPIRE);
+                                  CivEnum.QIN_DYNASTY,
+                                  CivEnum.ROMAN_EMPIRE);
 
         //Label
         startLabel.setTextFill(Color.RED);
@@ -65,11 +57,11 @@ public class StartScreen extends StackPane {
         startBox.setPadding(new Insets(530, 0, 100, 0));
 
         //StackPane
-        startLayout = new StackPane(startImage, startBox);
+        this.getChildren().addAll(startImage, startBox);
     }
 
     public StackPane getStartLayout() {
-        return startLayout;
+        return this;
     }
 
     /**

@@ -8,7 +8,6 @@ import view.NewSettlementPrompt;
 import view.StartScreen;
 import model.Bandit;
 import model.Egypt;
-import model.Map;
 import model.QinDynasty;
 import model.RomanEmpire;
 import javafx.application.Application;
@@ -20,18 +19,16 @@ import javafx.stage.Stage;
  */
 public class CivilizationGame extends Application {
 
+    private Stage stage = new Stage();
+
     /**
      * this method is called upon running/launching the application
      * this method should display a scene on the stage
      */
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("CS1331 Civilization");
-        primaryStage.setScene(startGame());
-        NewSettlementPrompt.getDialogButton().setOnAction(e -> {
-                GameScreen gameScreen = new GameScreen();
-                Scene game = new Scene(gameScreen.getGameLayout());
-                primaryStage.setScene(game);
-        });
+        stage.setTitle("CS1331 Civilization");
+        stage.setScene(startGame());
+        primaryStage = stage;
         primaryStage.show();
     }
 
@@ -50,28 +47,35 @@ public class CivilizationGame extends Application {
     */
     public Scene startGame() {
         StartScreen startScreen = new StartScreen();
-        startScreen.getStartButton().setOnMousePressed(e -> {
-            CivEnum selected = startScreen.getCivList().getSelectionModel()
-                                                       .getSelectedItem();
-            if (selected == CivEnum.ANCIENT_EGYPT) {
-                Egypt egypt = new Egypt();
-                String settleName = NewSettlementPrompt.getText().getResult();
-                GridFX.getMap().putSettlement(settleName, egypt, 5, 5);
-                GameController.setCivilization(egypt);
-            } else if (selected == CivEnum.QIN_DYNASTY) {
-                QinDynasty qin = new QinDynasty();
-                String settleName = NewSettlementPrompt.getText().getResult();
-                GridFX.getMap().putSettlement(settleName, qin, 5, 5);
-                GameController.setCivilization(qin);
-            } else {
-                RomanEmpire rome = new RomanEmpire();
-                String settleName = NewSettlementPrompt.getText().getResult();
-                GridFX.getMap().putSettlement(settleName, rome, 5, 5);
-                GameController.setCivilization(rome);
-            }
-            NewSettlementPrompt.newSettlementAlert();
-        });
         Scene start = new Scene(startScreen.getStartLayout());
+        startScreen.getStartButton().setOnMousePressed(e -> {
+                NewSettlementPrompt.newSettlementAlert();
+                CivEnum selected = startScreen.getCivList().getSelectionModel()
+                                                           .getSelectedItem();
+                if (selected == CivEnum.ANCIENT_EGYPT) {
+                    Egypt egypt = new Egypt();
+                    String name = NewSettlementPrompt.getText().getResult();
+                    GridFX.getMap().putSettlement(name, egypt, 5, 5);
+                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GameController.setCivilization(egypt);
+                } else if (selected == CivEnum.QIN_DYNASTY) {
+                    QinDynasty qin = new QinDynasty();
+                    String name = NewSettlementPrompt.getText().getResult();
+                    GridFX.getMap().putSettlement(name, qin, 5, 5);
+                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GameController.setCivilization(qin);
+                } else {
+                    RomanEmpire rome = new RomanEmpire();
+                    String name = NewSettlementPrompt.getText().getResult();
+                    GridFX.getMap().putSettlement(name, rome, 5, 5);
+                    GridFX.getMap().addEnemies(new Bandit(), 3);
+                    GameController.setCivilization(rome);
+                }
+                GameScreen gameScreen = new GameScreen();
+                gameScreen.update();
+                Scene game = new Scene(gameScreen.getGameLayout());
+                stage.setScene(game);
+            });
         return start;
     }
 }

@@ -9,13 +9,30 @@ import javafx.scene.control.Button;
 
 public class MilitaryMenu extends AbstractMenu {
 
-    private Button attackButton = new Button();
-    private Button moveButton = new Button();
+    private Button attackButton = new Button("Attack");
+    private Button moveButton = new Button("Move");
     /**
     * Implement the buttons and actions associated with
     * the buttons for the military menu
     */
     public MilitaryMenu() {
-        super();
+        attackButton.setOnMousePressed(e -> {
+                GameController.attacking();
+                if (GameController.getGameState()
+                    != GameController.GameState.NEUTRAL) {
+                    NoActionAlert.displayAlert();
+                }
+                GameController.updateResourcesBar();
+            });
+
+        moveButton.setOnMousePressed(e -> {
+                GameController.moving();
+                if (GameController.getGameState()
+                    != GameController.GameState.NEUTRAL) {
+                    NoActionAlert.displayAlert();
+                }
+            });
+        addMenuItem(attackButton);
+        addMenuItem(moveButton);
     }
 }

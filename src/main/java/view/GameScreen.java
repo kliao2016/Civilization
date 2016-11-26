@@ -2,30 +2,37 @@ package view;
 
 import controller.GameController;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 /**
  * This class represents the GameScreen class
  */
 public class GameScreen extends BorderPane {
 
-    private BorderPane gameLayout = new BorderPane();
-    private GridFX gameGrid = GridFX.getInstance();
     private static ResourcesMenu menuBar = new ResourcesMenu();
+    private static MilitaryMenu milMenu = new MilitaryMenu();
+    private static WorkerMenu workMenu = new WorkerMenu();
+    private static RecruitMenu recMenu = new RecruitMenu();
+    private static BuildingMenu buildMenu = new BuildingMenu();
+    private static StatusMenu statMenu = new StatusMenu();
+    private static VBox mainMenu = new VBox();
     /**
      * Creates a new view into the game. this layout should include
      * the rescource bar, grid map, and action menus
      *
      */
     public GameScreen() {
-        gameLayout.setTop(menuBar.getRootNode());
-        gameLayout.setCenter(gameGrid);
+        this.setTop(menuBar.getRootNode());
+        this.setCenter(GridFX.getInstance());
+        switchMenu(GameController.getGameState());
+        this.setLeft(mainMenu);
     }
 
     /**
      * This method should update the gridfx and the resource bar
      */
     public void update() {
-        gameGrid.update();
+        GridFX.update();
     }
     /**
     * this method should return the resource menu
@@ -36,14 +43,30 @@ public class GameScreen extends BorderPane {
     }
 
     public BorderPane getGameLayout() {
-        return gameLayout;
+        return this;
     }
+
     /**
      * This method switches menus based on passed in game state.
      * Game.java calls this to selectively control which menus are displayed
      * @param state
      */
     public static void switchMenu(GameController.GameState state) {
-       //TODO
+        if (state == GameController.GameState.MILITARY) {
+            mainMenu.getChildren().clear();
+            mainMenu.getChildren().addAll(milMenu.getRootNode());
+        } else if (state == GameController.GameState.WORKER) {
+            mainMenu.getChildren().clear();
+            mainMenu.getChildren().addAll(workMenu.getRootNode());
+        } else if (state == GameController.GameState.RECRUITING) {
+            mainMenu.getChildren().clear();
+            mainMenu.getChildren().addAll(recMenu.getRootNode());
+        } else if (state == GameController.GameState.BUILDING) {
+            mainMenu.getChildren().clear();
+            mainMenu.getChildren().addAll(buildMenu.getRootNode());
+        } else {
+            mainMenu.getChildren().clear();
+            mainMenu.getChildren().addAll(statMenu.getRootNode());
+        }
     }
 }

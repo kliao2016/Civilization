@@ -1,12 +1,11 @@
 package view;
 
-
 import controller.GameController;
+import model.TerrainTile;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import model.TerrainTile;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -51,6 +50,23 @@ public class TerrainTileFX extends StackPane {
      *image of the occupant to the tile.
      */
     public void updateTileView() {
-        //TODO
+        if (this.icon.getImage() != null) {
+            this.getChildren().clear();
+        }
+
+        if (this.tile.isEmpty()) {
+            this.overlay.setFill(Color.TRANSPARENT);
+            this.getChildren().addAll(background, overlay);
+        } else {
+            this.overlay.setFill(this.tile.getOccupant().getColor());
+            this.icon.setImage(this.tile.getOccupant().getImage());
+            this.getChildren().addAll(background, overlay, icon);
+        }
+
+        if (this == GameController.getLastClicked()) {
+            this.overlay.setStroke(Color.YELLOW);
+        } else {
+            this.overlay.setStroke(Color.BLACK);
+        }
     }
 }

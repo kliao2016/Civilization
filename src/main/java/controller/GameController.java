@@ -197,6 +197,10 @@ public class GameController {
         enemyCiv = bandits;
     }
 
+    public static GameState getGameState() {
+        return state;
+    }
+
     /**
      * Returns whether the current tile is a settlement, used when checking
      * if the recruit menu should be shown
