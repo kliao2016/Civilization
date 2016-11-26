@@ -27,6 +27,7 @@ public class BuildingMenu extends AbstractMenu {
                     NoActionAlert.displayAlert();
                 } else {
                     ((Building) occup).invest();
+                    GameController.getCivilization().getTreasury().spend(25);
                     GameController.updateResourcesBar();
                 }
             });
