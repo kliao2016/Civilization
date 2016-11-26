@@ -3,7 +3,7 @@ package view;
 import controller.GameController;
 import javafx.scene.control.Button;
 import model.Building;
-//import model.Settlement;
+import model.Settlement;
 import model.MapObject;
 
 /**
@@ -38,8 +38,8 @@ public class BuildingMenu extends AbstractMenu {
                     NoActionAlert.displayAlert();
                 } else {
                     if (GameController.getLastClicked().getTile().getOccupant()
-                        instanceof Building) {
-                        ((Building) occup).demolish();
+                        instanceof Settlement) {
+                        ((Settlement) occup).demolish();
                         GameController.getLastClicked().getTile()
                                                        .setOccupant(null);
                         GameController.getCivilization()
