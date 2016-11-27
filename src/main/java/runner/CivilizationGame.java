@@ -75,10 +75,14 @@ public class CivilizationGame extends Application {
                     GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(rome);
                 }
-                GameScreen gameScreen = new GameScreen();
-                gameScreen.update();
-                Scene game = new Scene(gameScreen.getGameLayout());
-                stage.setScene(game);
+                if (NewSettlementPrompt.getText().getResult() == null) {
+                    stage.setScene(start);
+                } else {
+                    GameScreen gameScreen = new GameScreen();
+                    gameScreen.update();
+                    Scene game = new Scene(gameScreen.getGameLayout());
+                    stage.setScene(game);
+                }
             });
         return start;
     }
