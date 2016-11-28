@@ -35,11 +35,11 @@ public class BuildingMenu extends AbstractMenu {
                 MapObject occup = GameController.getLastClicked()
                                                 .getTile()
                                                 .getOccupant();
-                if (GameController.getCivilization().getNumSettlements() <= 1) {
+                if (GameController.getCivilization().getNumSettlements() <= 1
+                    && occup instanceof Settlement) {
                     NoActionAlert.displayAlert();
                 } else {
-                    if (GameController.getLastClicked().getTile().getOccupant()
-                        instanceof Settlement) {
+                    if (occup instanceof Settlement) {
                         ((Settlement) occup).demolish();
                         GameController.getLastClicked().getTile()
                                                        .setOccupant(null);
@@ -48,7 +48,11 @@ public class BuildingMenu extends AbstractMenu {
                         GameController.getLastClicked().updateTileView();
                         GameController.updateResourcesBar();
                     } else {
-                        NoActionAlert.displayAlert();
+                        ((Building) occup).demolish();
+                        GameController.getLastClicked().getTile()
+                                                       .setOccupant(null);
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
                     }
                 }
             });

@@ -134,6 +134,7 @@ public class RecruitMenu extends AbstractMenu {
                     }
                 }
             });
+        selectButton.setStyle("-fx-base: #0000FF");
         addMenuItem(recruitItems);
         addMenuItem(selectButton);
     }
