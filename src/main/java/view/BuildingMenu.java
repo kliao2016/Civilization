@@ -49,14 +49,17 @@ public class BuildingMenu extends AbstractMenu {
                         GameController.getCivilization()
                                       .decrementNumSettlements();
                         GameController.getLastClicked().updateTileView();
+                        GameController.setLastClicked(
+                                            GameController.getLastClicked());
                         GameController.updateResourcesBar();
                     } else {
                         ((Building) occup).demolish();
                         GameController.getLastClicked().getTile()
                                                        .setOccupant(null);
                         GameController.getLastClicked().updateTileView();
+                        GameController.setLastClicked(
+                                            GameController.getLastClicked());
                         GameController.updateResourcesBar();
-                        GameController.setLastClicked(null);
                     }
                 }
             });
