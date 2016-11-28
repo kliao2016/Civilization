@@ -27,7 +27,8 @@ public class WorkerMenu extends AbstractMenu {
                 GameController.moving();
                 if (occup instanceof Unit
                     && !((Unit) occup)
-                    .canMove(1)) {
+                    .canMove(GameController.getLastClicked().getTile()
+                                                        .getType().getCost())) {
                     NoActionAlert.displayAlert();
                 }
             });

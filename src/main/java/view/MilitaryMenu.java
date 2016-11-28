@@ -37,7 +37,8 @@ public class MilitaryMenu extends AbstractMenu {
                 GameController.moving();
                 if (occup.isMilitaryUnit()
                     && !((MilitaryUnit) occup)
-                    .canMove(1)) {
+                    .canMove(GameController.getLastClicked().getTile()
+                                                        .getType().getCost())) {
                     NoActionAlert.displayAlert();
                 }
             });

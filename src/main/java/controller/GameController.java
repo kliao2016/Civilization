@@ -124,7 +124,13 @@ public class GameController {
      * Uses the TerrainTile form so that the AI can use it too
      */
     private static boolean move(TerrainTile start, TerrainTile end) {
-        if (!(end.isEmpty() && GridFX.adjacent(end, start)
+        if (start.getOccupant().isFriendly()
+            && !(end.isEmpty() && GridFX.adjacent(end, start)
+                && ((Unit) start.getOccupant()).canMove(
+                        end.getType().getCost()))) {
+            NoActionAlert.displayAlert();
+            return false;
+        } else if (!(end.isEmpty() && GridFX.adjacent(end, start)
                 && ((Unit) start.getOccupant()).canMove(
                         end.getType().getCost()))) {
             return false;
