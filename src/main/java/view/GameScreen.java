@@ -52,21 +52,28 @@ public class GameScreen extends BorderPane {
      * @param state
      */
     public static void switchMenu(GameController.GameState state) {
-        if (state == GameController.GameState.MILITARY) {
+        switch (state) {
+        case MILITARY:
             mainMenu.getChildren().clear();
             mainMenu.getChildren().addAll(milMenu.getRootNode());
-        } else if (state == GameController.GameState.WORKER) {
+            break;
+        case WORKER:
             mainMenu.getChildren().clear();
             mainMenu.getChildren().addAll(workMenu.getRootNode());
-        } else if (state == GameController.GameState.RECRUITING) {
+            break;
+        case RECRUITING:
             mainMenu.getChildren().clear();
             mainMenu.getChildren().addAll(recMenu.getRootNode());
-        } else if (state == GameController.GameState.BUILDING) {
+            break;
+        case BUILDING:
             mainMenu.getChildren().clear();
             mainMenu.getChildren().addAll(buildMenu.getRootNode());
-        } else {
+            break;
+        case NEUTRAL:
             mainMenu.getChildren().clear();
             mainMenu.getChildren().addAll(statMenu.getRootNode());
+            break;
+        default: break;
         }
     }
 }

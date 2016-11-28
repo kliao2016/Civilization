@@ -14,6 +14,7 @@ import model.Unit;
 import view.GameScreen;
 import view.GridFX;
 import view.TerrainTileFX;
+import view.NoActionAlert;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -160,6 +161,7 @@ public class GameController {
                 == attacker.getOccupant().getOwner()
             || !((MilitaryUnit) attacker.getOccupant()).getCanAttack()
             || !GridFX.adjacent(attacker, enemy)) {
+            NoActionAlert.displayAlert();
             state = GameState.NEUTRAL;
             return;
         }
@@ -340,7 +342,6 @@ public class GameController {
             c = col + rand.nextInt(3) - 1;
         }
         return GridFX.getMap().getTile(r, c);
-
     }
 }
 

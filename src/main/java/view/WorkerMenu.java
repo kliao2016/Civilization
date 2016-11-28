@@ -38,6 +38,8 @@ public class WorkerMenu extends AbstractMenu {
                 if (occupant.isWorker()
                     && ((Convertable) occupant).canConvert(type)) {
                     tile.setOccupant(((Convertable) occupant).convert());
+                    GameController.setLastClicked(
+                                        GameController.getLastClicked());
                     GameController.getLastClicked().updateTileView();
                 } else {
                     NoActionAlert.displayAlert();

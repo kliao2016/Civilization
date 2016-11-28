@@ -56,25 +56,16 @@ public class CivilizationGame extends Application {
                 NewSettlementPrompt.newSettlementAlert();
                 CivEnum selected = startScreen.getCivList().getSelectionModel()
                                                            .getSelectedItem();
-                if (selected == CivEnum.ANCIENT_EGYPT) {
+                if (selected == null) {
                     Egypt egypt = new Egypt();
                     String name = NewSettlementPrompt.getText().getResult();
                     GridFX.getMap().putSettlement(name, egypt, 0, 9);
                     GridFX.getMap().addEnemies(new Bandit(), 1);
                     GameController.setCivilization(egypt);
-                } else if (selected == CivEnum.QIN_DYNASTY) {
-                    QinDynasty qin = new QinDynasty();
-                    String name = NewSettlementPrompt.getText().getResult();
-                    GridFX.getMap().putSettlement(name, qin, 0, 9);
-                    GridFX.getMap().addEnemies(new Bandit(), 1);
-                    GameController.setCivilization(qin);
                 } else {
-                    RomanEmpire rome = new RomanEmpire();
-                    String name = NewSettlementPrompt.getText().getResult();
-                    GridFX.getMap().putSettlement(name, rome, 0, 9);
-                    GridFX.getMap().addEnemies(new Bandit(), 1);
-                    GameController.setCivilization(rome);
+                    civOption(selected);
                 }
+
                 if (NewSettlementPrompt.getText().getResult() == null) {
                     stage.setScene(start);
                 } else {
@@ -85,5 +76,34 @@ public class CivilizationGame extends Application {
                 }
             });
         return start;
+    }
+
+    //Helper for startGame() method
+    public void civOption(CivEnum selected) {
+        String name = new String();
+        switch (selected) {
+        case ANCIENT_EGYPT:
+            Egypt egypt = new Egypt();
+            name = NewSettlementPrompt.getText().getResult();
+            GridFX.getMap().putSettlement(name, egypt, 0, 9);
+            GridFX.getMap().addEnemies(new Bandit(), 1);
+            GameController.setCivilization(egypt);
+            break;
+        case QIN_DYNASTY:
+            QinDynasty qin = new QinDynasty();
+            name = NewSettlementPrompt.getText().getResult();
+            GridFX.getMap().putSettlement(name, qin, 0, 9);
+            GridFX.getMap().addEnemies(new Bandit(), 1);
+            GameController.setCivilization(qin);
+            break;
+        case ROMAN_EMPIRE:
+            RomanEmpire rome = new RomanEmpire();
+            name = NewSettlementPrompt.getText().getResult();
+            GridFX.getMap().putSettlement(name, rome, 0, 9);
+            GridFX.getMap().addEnemies(new Bandit(), 1);
+            GameController.setCivilization(rome);
+            break;
+        default: break;
+        }
     }
 }
