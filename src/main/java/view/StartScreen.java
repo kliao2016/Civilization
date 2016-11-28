@@ -49,6 +49,7 @@ public class StartScreen extends StackPane {
 
         //Button
         startButton.setText("START GAME");
+        startButton.setStyle("-fx-base: #FF0000");
 
         //VBox
         startBox.getChildren().addAll(startLabel, civList, startButton);
