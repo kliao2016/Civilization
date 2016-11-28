@@ -40,6 +40,10 @@ public class TerrainTileFX extends StackPane {
     public TerrainTile getTile() {
         return tile;
     }
+
+    public Rectangle getOverlay() {
+        return overlay;
+    }
     /**
      * this method updates the view of this TerrainTileFX.
      * It should check if the TerrainTile is empty. If it is empty,

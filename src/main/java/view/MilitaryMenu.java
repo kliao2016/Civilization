@@ -2,6 +2,7 @@ package view;
 
 import controller.GameController;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import model.MapObject;
 import model.MilitaryUnit;
 /**
@@ -21,6 +22,8 @@ public class MilitaryMenu extends AbstractMenu {
                 MapObject occup = GameController.getLastClicked().getTile()
                                                                  .getOccupant();
                 GameController.attacking();
+                GameController.getLastClicked().getOverlay()
+                                               .setStroke(Color.RED);
                 if (occup.isMilitaryUnit()
                     && !((MilitaryUnit) occup).getCanAttack()) {
                     NoActionAlert.displayAlert();

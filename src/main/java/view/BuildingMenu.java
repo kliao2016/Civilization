@@ -2,9 +2,10 @@ package view;
 
 import controller.GameController;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import model.Building;
-import model.Settlement;
 import model.MapObject;
+import model.Settlement;
 
 /**
  * This class should represents the bulding menu
@@ -26,6 +27,8 @@ public class BuildingMenu extends AbstractMenu {
                     < 25) {
                     NoActionAlert.displayAlert();
                 } else {
+                    GameController.getLastClicked().getOverlay()
+                                                   .setStroke(Color.GREEN);
                     ((Building) occup).invest();
                     GameController.getCivilization().getTreasury().spend(25);
                     GameController.updateResourcesBar();
@@ -53,6 +56,7 @@ public class BuildingMenu extends AbstractMenu {
                                                        .setOccupant(null);
                         GameController.getLastClicked().updateTileView();
                         GameController.updateResourcesBar();
+                        GameController.setLastClicked(null);
                     }
                 }
             });
