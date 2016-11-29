@@ -11,16 +11,7 @@ import model.Unit;
  */
 public class RecruitMenu extends AbstractMenu {
 
-    private static final String MELEE = "Melee Unit";
-    private static final String RANGED = "Ranged Unit";
-    private static final String HYBRID = "Hybrid Unit";
-    private static final String SIEGE = "Siege Unit";
-    private static final String SETTLE = "Settlers";
-    private static final String FARMERS = "Farmers";
-    private static final String COALS = "Coal Miners";
-    private static final String ANGLERS = "Anglers";
-    private static final String MASTERS = "Master Builders";
-    private ListView<String> recruitItems = new ListView<>();
+    private ListView<UnitEnum> recruitItems = new ListView<>();
     private Civilization owner = GameController.getCivilization();
     private Button selectButton = new Button("Select");
     /**
@@ -30,10 +21,18 @@ public class RecruitMenu extends AbstractMenu {
     *here
     */
     public RecruitMenu() {
-        recruitItems.getItems().addAll(MELEE, RANGED, HYBRID, SIEGE, SETTLE,
-            FARMERS, COALS, ANGLERS, MASTERS);
+        recruitItems.getItems().addAll(UnitEnum.MELEE,
+                                       UnitEnum.RANGED,
+                                       UnitEnum.HYBRID,
+                                       UnitEnum.SIEGE,
+                                       UnitEnum.SETTLE,
+                                       UnitEnum.FARMERS,
+                                       UnitEnum.COALS,
+                                       UnitEnum.ANGLERS,
+                                       UnitEnum.MASTERS);
         selectButton.setOnMousePressed(e -> {
-                String sel = recruitItems.getSelectionModel().getSelectedItem();
+                UnitEnum sel = recruitItems.getSelectionModel()
+                                           .getSelectedItem();
                 if (sel == null) {
                     NoActionAlert.displayAlert();
                 } else {
@@ -46,7 +45,7 @@ public class RecruitMenu extends AbstractMenu {
     }
 
     //Helper method for constructor
-    public void recruit(String selected) {
+    public void recruit(UnitEnum selected) {
         Unit recruit;
         switch (selected) {
         case MELEE:
