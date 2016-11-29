@@ -19,15 +19,17 @@ import javafx.stage.Stage;
  */
 public class CivilizationGame extends Application {
 
-    private Stage stage = new Stage();
+    private Stage stage;
 
     /**
      * this method is called upon running/launching the application
      * this method should display a scene on the stage
      */
     public void start(Stage primaryStage) {
+        stage = new Stage();
         stage.setTitle("CS1331 Civilization");
-        stage.setScene(startGame());
+        Scene display = startGame();
+        stage.setScene(display);
         primaryStage = stage;
         primaryStage.show();
     }
@@ -51,7 +53,7 @@ public class CivilizationGame extends Application {
     */
     public Scene startGame() {
         StartScreen startScreen = new StartScreen();
-        Scene start = new Scene(startScreen.getStartLayout());
+        Scene start = new Scene(startScreen);
         startScreen.getStartButton().setOnMousePressed(e -> {
                 NewSettlementPrompt.newSettlementAlert();
                 CivEnum selected = startScreen.getCivList().getSelectionModel()
@@ -71,8 +73,7 @@ public class CivilizationGame extends Application {
                 } else {
                     GameScreen gameScreen = new GameScreen();
                     gameScreen.update();
-                    Scene game = new Scene(gameScreen.getGameLayout());
-                    stage.setScene(game);
+                    stage.setScene(new Scene(gameScreen));
                 }
             });
         return start;

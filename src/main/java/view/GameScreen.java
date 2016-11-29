@@ -42,10 +42,6 @@ public class GameScreen extends BorderPane {
         return menuBar;
     }
 
-    public BorderPane getGameLayout() {
-        return this;
-    }
-
     /**
      * This method switches menus based on passed in game state.
      * Game.java calls this to selectively control which menus are displayed

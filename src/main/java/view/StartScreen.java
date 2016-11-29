@@ -61,10 +61,6 @@ public class StartScreen extends StackPane {
         this.getChildren().addAll(startImage, startBox);
     }
 
-    public StackPane getStartLayout() {
-        return this;
-    }
-
     /**
     * gets the start button
     * @return the start button
