@@ -41,10 +41,6 @@ public class CivilizationGame extends Application {
         launch(args);
     }
 
-    public Stage getStage() {
-        return stage;
-    }
-
     /**
     * This method is responsible for setting the scene to the corresponding
     * layout.
