@@ -6,6 +6,7 @@ import model.Convertable;
 import model.MapObject;
 import model.TerrainTile;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -24,6 +25,8 @@ public class WorkerMenu extends AbstractMenu {
                 MapObject occup = GameController.getLastClicked().getTile()
                                                                  .getOccupant();
                 GameController.moving();
+                GameController.getLastClicked().getOverlay()
+                                               .setStroke(Color.LIME);
             });
         convertButton.setOnMousePressed(e -> {
                 TerrainTile tile = GameController.getLastClicked().getTile();

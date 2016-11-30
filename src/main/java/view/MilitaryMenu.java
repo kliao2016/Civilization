@@ -29,6 +29,8 @@ public class MilitaryMenu extends AbstractMenu {
         moveButton.setOnMousePressed(e -> {
                 MapObject occup = GameController.getLastClicked().getTile()
                                                                  .getOccupant();
+                GameController.getLastClicked().getOverlay()
+                                               .setStroke(Color.LIME);
                 GameController.moving();
             });
         attackButton.setStyle("-fx-base: #FF0000;");
