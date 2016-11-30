@@ -34,6 +34,10 @@ public class RecruitMenu extends AbstractMenu {
                 UnitEnum sel = recruitItems.getSelectionModel()
                                            .getSelectedItem();
                 if (sel == null) {
+                    NoActionAlert.setMessage("Could not recruit. "
+                                             + "Please make sure "
+                                             + "you have selected a unit "
+                                             + "to recruit.");
                     NoActionAlert.displayAlert();
                 } else {
                     recruit(sel);
@@ -47,10 +51,14 @@ public class RecruitMenu extends AbstractMenu {
     //Helper method for constructor
     public void recruit(UnitEnum selected) {
         Unit recruit;
+        String alert = "Could not recruit unit. "
+                        + "Please make sure you have enough "
+                        + "gold, food, resources, and happiness.";
         switch (selected) {
         case MELEE:
             recruit = owner.getMeleeUnit();
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -65,6 +73,7 @@ public class RecruitMenu extends AbstractMenu {
         case RANGED:
             recruit = owner.getRangedUnit();
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -79,6 +88,7 @@ public class RecruitMenu extends AbstractMenu {
         case HYBRID:
             recruit = owner.getRangedUnit();
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -93,6 +103,7 @@ public class RecruitMenu extends AbstractMenu {
         case SIEGE:
             recruit = owner.getSiegeUnit();
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -107,6 +118,7 @@ public class RecruitMenu extends AbstractMenu {
         case SETTLE:
             recruit = owner.getSettlerUnit("");
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -122,6 +134,7 @@ public class RecruitMenu extends AbstractMenu {
             break;
         case FARMERS:
             if (!owner.getFarmerUnit().isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 owner.getFarmerUnit().applyInitialCosts();
@@ -136,6 +149,7 @@ public class RecruitMenu extends AbstractMenu {
         case COALS:
             recruit = owner.getSiegeUnit();
             if (!recruit.isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
@@ -149,6 +163,7 @@ public class RecruitMenu extends AbstractMenu {
             break;
         case ANGLERS:
             if (!owner.getAnglerUnit().isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 owner.getAnglerUnit().applyInitialCosts();
@@ -162,6 +177,7 @@ public class RecruitMenu extends AbstractMenu {
             break;
         case MASTERS:
             if (!owner.getMasterBuilderUnit().isAffordable()) {
+                NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 owner.getMasterBuilderUnit().applyInitialCosts();

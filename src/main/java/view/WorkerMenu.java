@@ -5,7 +5,6 @@ import controller.TileType;
 import model.Convertable;
 import model.MapObject;
 import model.TerrainTile;
-import model.Unit;
 import javafx.scene.control.Button;
 
 /**
@@ -25,12 +24,6 @@ public class WorkerMenu extends AbstractMenu {
                 MapObject occup = GameController.getLastClicked().getTile()
                                                                  .getOccupant();
                 GameController.moving();
-                if (occup instanceof Unit
-                    && !((Unit) occup)
-                    .canMove(GameController.getLastClicked().getTile()
-                                                        .getType().getCost())) {
-                    NoActionAlert.displayAlert();
-                }
             });
         convertButton.setOnMousePressed(e -> {
                 TerrainTile tile = GameController.getLastClicked().getTile();
@@ -43,6 +36,10 @@ public class WorkerMenu extends AbstractMenu {
                                         GameController.getLastClicked());
                     GameController.getLastClicked().updateTileView();
                 } else {
+                    NoActionAlert.setMessage("Could not convert. "
+                                             + "Please make sure "
+                                             + "the unit is on the correct "
+                                             + "terrain.");
                     NoActionAlert.displayAlert();
                 }
                 GameController.updateResourcesBar();

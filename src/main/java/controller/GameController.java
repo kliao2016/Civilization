@@ -128,6 +128,11 @@ public class GameController {
             && !(end.isEmpty() && GridFX.adjacent(end, start)
                 && ((Unit) start.getOccupant()).canMove(
                         end.getType().getCost()))) {
+            NoActionAlert.setMessage("Could not move. "
+                                     + "Please make sure you have "
+                                     + "enough endurance, the "
+                                     + "target tile is adjacent, "
+                                     + "and the target tile is empty.");
             NoActionAlert.displayAlert();
             return false;
         } else if (!(end.isEmpty() && GridFX.adjacent(end, start)
@@ -167,6 +172,12 @@ public class GameController {
                 == attacker.getOccupant().getOwner()
             || !((MilitaryUnit) attacker.getOccupant()).getCanAttack()
             || !GridFX.adjacent(attacker, enemy)) {
+            NoActionAlert.setMessage("Could not attack. "
+                                     + "Please make sure your unit "
+                                     + "can attack, your target "
+                                     + "is not friendly, your target "
+                                     + "is adjacent, and your target "
+                                     + "is not empty.");
             NoActionAlert.displayAlert();
             state = GameState.NEUTRAL;
             return;

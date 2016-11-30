@@ -8,8 +8,12 @@ public class NoActionAlert {
     private static String message;
 
     public static void displayAlert() {
-        message = new String("You cannot perform this action!");
+        setMessage(message);
         actionAlert = new Alert(Alert.AlertType.ERROR, message);
         actionAlert.showAndWait();
+    }
+
+    public static void setMessage(String newMessage) {
+        message = newMessage;
     }
 }

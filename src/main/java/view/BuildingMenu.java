@@ -25,6 +25,10 @@ public class BuildingMenu extends AbstractMenu {
                                                 .getOccupant();
                 if (GameController.getCivilization().getTreasury().getCoins()
                     < 25) {
+                    NoActionAlert.setMessage("You do not have enough "
+                                             + "money to invest. "
+                                             + "Please make sure that you "
+                                             + "have at least 25 gold.");
                     NoActionAlert.displayAlert();
                 } else {
                     GameController.getLastClicked().getOverlay()
@@ -40,6 +44,8 @@ public class BuildingMenu extends AbstractMenu {
                                                 .getOccupant();
                 if (GameController.getCivilization().getNumSettlements() <= 1
                     && occup instanceof Settlement) {
+                    NoActionAlert.setMessage("You cannot demolish "
+                                             + "your last settlement!");
                     NoActionAlert.displayAlert();
                 } else {
                     if (occup instanceof Settlement) {

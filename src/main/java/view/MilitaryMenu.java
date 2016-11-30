@@ -4,7 +4,6 @@ import controller.GameController;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import model.MapObject;
-import model.MilitaryUnit;
 /**
  * Created by William on 11/11/2016.
  */
@@ -24,10 +23,6 @@ public class MilitaryMenu extends AbstractMenu {
                 GameController.attacking();
                 GameController.getLastClicked().getOverlay()
                                                .setStroke(Color.RED);
-                if (occup.isMilitaryUnit()
-                    && !((MilitaryUnit) occup).getCanAttack()) {
-                    NoActionAlert.displayAlert();
-                }
                 GameController.updateResourcesBar();
             });
 
@@ -35,12 +30,6 @@ public class MilitaryMenu extends AbstractMenu {
                 MapObject occup = GameController.getLastClicked().getTile()
                                                                  .getOccupant();
                 GameController.moving();
-                if (occup.isMilitaryUnit()
-                    && !((MilitaryUnit) occup)
-                    .canMove(GameController.getLastClicked().getTile()
-                                                        .getType().getCost())) {
-                    NoActionAlert.displayAlert();
-                }
             });
         attackButton.setStyle("-fx-base: #FF0000;");
         moveButton.setStyle("-fx-base: #00FF00");
