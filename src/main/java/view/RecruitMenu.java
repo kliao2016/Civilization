@@ -116,16 +116,17 @@ public class RecruitMenu extends AbstractMenu {
             }
             break;
         case SETTLE:
-            recruit = owner.getSettlerUnit("");
+            String name = "";
+            recruit = owner.getSettlerUnit(name);
             if (!recruit.isAffordable()) {
                 NoActionAlert.setMessage(alert);
                 NoActionAlert.displayAlert();
             } else {
                 recruit.applyInitialCosts();
                 NewSettlementPrompt.newSettlementAlert();
-                String name = NewSettlementPrompt.getText().getResult();
-                GameController.getLastClicked().getTile().setOccupant(
-                    owner.getSettlerUnit(name));
+                name = NewSettlementPrompt.getText().getResult();
+                recruit = owner.getSettlerUnit(name);
+                GameController.getLastClicked().getTile().setOccupant(recruit);
                 GameController.setLastClicked(
                                     GameController.getLastClicked());
                 GameController.getLastClicked().updateTileView();
