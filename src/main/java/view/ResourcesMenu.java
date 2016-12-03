@@ -4,6 +4,7 @@ import controller.GameController;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.Civilization;
+import javafx.geometry.Pos;
 
 public class ResourcesMenu {
 
@@ -29,6 +30,7 @@ public class ResourcesMenu {
         food = new Text("Food: " + playerCiv.getFood());
         happy = new Text("Happiness: " + playerCiv.getHappiness());
         resBox.getChildren().addAll(strat, res, settle, money, food, happy);
+        resBox.setAlignment(Pos.CENTER);
     }
     /**
     * should update all the resource values to the current
