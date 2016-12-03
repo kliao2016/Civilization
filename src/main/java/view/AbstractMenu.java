@@ -6,6 +6,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.control.Separator;
+import javafx.geometry.Orientation;
+import javafx.geometry.Insets;
 
 /**
  * Created by RuYiMarone on 11/12/2016.
@@ -16,12 +19,16 @@ public class AbstractMenu {
     private Button endTurnButton = new Button("End Turn");
     private Text terrain = new Text();
     private Text unitStatus = new Text();
+    private Separator sep = new Separator(Orientation.HORIZONTAL);
+    private Separator sep1 = new Separator(Orientation.HORIZONTAL);
     private VBox menu = new VBox(10, terrain, unitStatus,
-            exploreButton, endTurnButton);
+        exploreButton, endTurnButton);
 
     public AbstractMenu() {
         menu.setPrefWidth(PREFWIDTH);
         unitStatus.setWrappingWidth(120);
+        sep.setPadding(new Insets(5, 0, 5, 0));
+        sep1.setPadding(new Insets(5, 0, 5, 0));
 
         exploreButton.setOnMousePressed(e -> {
                 GameController.getCivilization().explore();
@@ -93,6 +100,9 @@ public class AbstractMenu {
             if (!GameController.getLastClicked().getTile().isEmpty()) {
                 unitStatus.setText(GameController.getLastClicked()
                         .getTile().getOccupant().getStatusString());
+                menu.getChildren().clear();
+                menu.getChildren().addAll(terrain, sep, unitStatus, sep1,
+                    exploreButton, endTurnButton);
             }
         }
     }
