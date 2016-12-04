@@ -21,7 +21,7 @@ public class AbstractMenu {
     private Text unitStatus = new Text();
     private Separator sep = new Separator(Orientation.HORIZONTAL);
     private Separator sep1 = new Separator(Orientation.HORIZONTAL);
-    private VBox menu = new VBox(10, terrain, unitStatus,
+    private VBox menu = new VBox(10, terrain, sep, unitStatus, sep1,
         exploreButton, endTurnButton);
 
     public AbstractMenu() {
@@ -100,9 +100,6 @@ public class AbstractMenu {
             if (!GameController.getLastClicked().getTile().isEmpty()) {
                 unitStatus.setText(GameController.getLastClicked()
                         .getTile().getOccupant().getStatusString());
-                menu.getChildren().clear();
-                menu.getChildren().addAll(terrain, sep, unitStatus, sep1,
-                    exploreButton, endTurnButton);
             }
         }
     }
