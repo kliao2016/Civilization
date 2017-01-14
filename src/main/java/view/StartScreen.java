@@ -55,7 +55,8 @@ public class StartScreen extends StackPane {
         startBox.getChildren().addAll(startLabel, civList, startButton);
         startBox.setAlignment(Pos.BOTTOM_CENTER);
         startBox.setMaxWidth(375);
-        startBox.setPadding(new Insets(530, 0, 100, 0));
+        startBox.setMaxHeight(607);
+        startBox.setPadding(new Insets(485, 0, 0, 0));
 
         //StackPane
         this.getChildren().addAll(startImage, startBox);
