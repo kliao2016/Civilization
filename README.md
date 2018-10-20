@@ -1,3 +1,1 @@
-# Run using:
-#   - gradle run or
-#   - java -cp src/main/java runner.CivilizationGame
+# Run using gradle run or java -cp src/main/java runner.CivilizationGame
